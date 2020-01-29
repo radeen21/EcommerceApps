@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        applicationId "com.example.ecommerceapp"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api kotlins.stdlib
+
+    implementation project(":domain")
+    implementation project(":data")
+
+    //Android Support Dependencies
+    implementation support.appcompat
+    implementation support.constraint
+    implementation support.recyclerView
+    implementation support.koin
+    implementation support.koinScope
+    implementation support.koinViewmodel
+    implementation support.fragmentNav
+    implementation support.iuNav
+    implementation support.lifecycleVM
+    implementation support.lifecycleExtention
+    implementation support.legacy
+
+    //test
+    androidTestImplementation tests.runner
+    androidTestImplementation tests.espresso
+    testImplementation tests.junit
+
+    //Retrofit Dependencies
+    implementation libs.retrofit
+}
